@@ -22,12 +22,12 @@ def main():
             selected_sites = lib.get_site_choices(sites)
             if not selected_sites:
                 print(Fore.RED + "No sites selected..." + Fore.RESET)
-                time.sleep(3)
+                time.sleep(2)
                 return
     else:
         selected_sites = lib.get_site_choices(sites)
         if not selected_sites:
-            print(Fore.RED + "No sites selected..." + Fore.RESET)
+            print(Fore.RED + "No sites selected...\n" + Fore.RESET)
             time.sleep(3)
             return
 
