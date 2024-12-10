@@ -1,0 +1,9 @@
+#######################################
+###     Application Requirements    ###
+#######################################
+
+urllib3
+requests
+inquirer
+colorama
+subprocess.run
