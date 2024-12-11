@@ -1,5 +1,7 @@
 # IMPORT MODULES
+import os
 import json                                     # read JSON file
+import msvcrt                                   # for options menu
 import requests                                 # to check the url status
 import inquirer                                 # for Checkboxes
 import webbrowser                               # to search on the browser
@@ -101,5 +103,27 @@ def load_last_selection(file_path="json/last_selection.json"):
             return json.load(f)
     except FileNotFoundError:
         return []
+
+
+# Arrow key menu function
+def arrow_menu(options, prompt):
+    selected_index = 0
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')  # Clear console
+        print(Fore.YELLOW + prompt + Fore.RESET + "\n")
+        for i, option in enumerate(options):
+            if i == selected_index:
+                print(Fore.GREEN + f"> {option}" + Fore.RESET)  # Highlight selected option
+            else:
+                print(f"  {option}")
+        key = msvcrt.getch()
+        if key == b'\xe0':  # Arrow key prefix
+            key = msvcrt.getch()
+            if key == b'H':  # Up arrow
+                selected_index = (selected_index - 1) % len(options)
+            elif key == b'P':  # Down arrow
+                selected_index = (selected_index + 1) % len(options)
+        elif key == b'\r':  # Enter key
+            return selected_index
 
 

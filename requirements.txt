@@ -6,4 +6,5 @@ urllib3
 requests
 inquirer
 colorama
+inquirerpy
 subprocess.run
