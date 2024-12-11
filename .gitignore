@@ -1,5 +1,6 @@
 venv
 .idea
 .vscode
+__pycache__
 src/trial.py
 src/json/last_selection.json

@@ -1,7 +1,32 @@
 {
-    "dev.to": "https://dev.to",
-    "Medium": "https://medium.com",
-    "Google": "https://google.com",
-    "Github": "https://github.com",
-    "StackOverflow": "https://stackoverflow.com"
+    "Dev.to": {
+        "baseurl": "https://dev.to",
+        "categories": ["Programming", "Career", "Ideas"]
+    },
+    "Medium": {
+        "baseurl": "https://medium.com",
+        "categories": ["Programming", "Career", "Ideas"]
+    },
+    "Google": {
+        "baseurl": "https://google.com",
+        "categories": ["Search Engine"]
+    },
+    "Github": {
+        "baseurl": "https://github.com",
+        "categories": ["Programming", "Doubt Solving"]
+    },
+    "StackOverflow": {
+        "baseurl": "https://stackoverflow.com",
+        "categories": ["Programming", "Doubt Solving"]
+    },
+    "Aceternity UI":{
+        "baseurl": "https://ui.aceternity.com/",
+        "categories": ["Web Development"],
+        "search_path": "/components/"
+    },
+    "Kitwind.io":{
+        "baseurl":"https://kitwind.io/products/kometa",
+        "categories": ["Web Development"],
+        "search_path": "/components/"
+    }
 }

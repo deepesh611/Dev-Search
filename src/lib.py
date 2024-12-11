@@ -6,7 +6,6 @@ import requests                                 # to check the url status
 import inquirer                                 # for Checkboxes
 import webbrowser                               # to search on the browser
 from colorama import Fore                       # for colored texts
-from urllib.parse import urlencode, urljoin     # to generate complete URL
 
 
 
@@ -44,9 +43,8 @@ def get_site_choices(options):
 
 
 # construct a valid search URL
-def construct_url(base_url, search_term):
-    query = urlencode({'q': search_term})                   # Encode the search term to handle spaces and special characters
-    full_url = urljoin(base_url, f"/search?{query}")    # Join the base URL with the query string
+def construct_url(base_url, query, search_path="/search?q="):
+    full_url = f"{base_url}{search_path}{query}"        # Join the base URL with the query string
     return full_url
 
 
@@ -67,7 +65,7 @@ def open_in_browser(urls):
     print(Fore.GREEN + "\nThe following URLs were opened successfully:" + Fore.RESET)
     for url in success:
         print(url)
-
+    
     if failed:
         print(Fore.RED + "\nThe following URLs encountered an error:" + Fore.RESET)
         for url, error in failed:
@@ -125,5 +123,20 @@ def arrow_menu(options, prompt):
                 selected_index = (selected_index + 1) % len(options)
         elif key == b'\r':  # Enter key
             return selected_index
+
+
+# Get unique categories from the sites
+def get_unique_categories(sites):
+    categories = set()
+    for site_data in sites.values():
+        categories.update(site_data.get("categories", []))
+    return sorted(categories)
+
+
+# Get sites by category
+def filter_sites_by_category(sites, category):
+    return [site for site, data in sites.items() if category in data.get("categories", [])]
+
+
 
 
