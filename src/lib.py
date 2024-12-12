@@ -1,8 +1,8 @@
 # IMPORT MODULES
 import os
 import json                                     # read JSON file
-import msvcrt                                   # for options menu
 import requests                                 # to check the url status
+import keyboard                                 # for menu selection
 import inquirer                                 # for Checkboxes
 import webbrowser                               # to search on the browser
 from colorama import Fore                       # for colored texts
@@ -114,15 +114,15 @@ def arrow_menu(options, prompt):
                 print(Fore.GREEN + f"> {option}" + Fore.RESET)  # Highlight selected option
             else:
                 print(f"  {option}")
-        key = msvcrt.getch()
-        if key == b'\xe0':  # Arrow key prefix
-            key = msvcrt.getch()
-            if key == b'H':  # Up arrow
+
+        event = keyboard.read_event(suppress=True)
+        if event.event_type == "down":  # Key is pressed
+            if event.name == "up":  # Up arrow
                 selected_index = (selected_index - 1) % len(options)
-            elif key == b'P':  # Down arrow
+            elif event.name == "down":  # Down arrow
                 selected_index = (selected_index + 1) % len(options)
-        elif key == b'\r':  # Enter key
-            return selected_index
+            elif event.name == "enter":  # Enter key
+                return selected_index
 
 
 # Get unique categories from the sites
